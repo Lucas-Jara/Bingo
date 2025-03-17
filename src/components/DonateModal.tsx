@@ -6,7 +6,7 @@ import { Wrapper } from "./Wrapper";
 
 initMercadoPago(process.env.NEXT_PUBLIC_MP_PUBLIC_KEY || "", {locale:"es-AR"});
 export const DonateModal = ({ open, setOpen }: any) => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(2000);
 
   const onSubmit = async () => {
     if(amount <= 100) return
@@ -74,6 +74,7 @@ export const DonateModal = ({ open, setOpen }: any) => {
                 min={0}
                 placeholder="1.00$"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                onFocus={(e) => e.target.select()}
               />
               {amount >= 100 && <Wallet onSubmit={onSubmit}  />}
             </div>
